@@ -16,6 +16,7 @@
 		CE5866751EEA8CF700A11B82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5866731EEA8CF700A11B82 /* Main.storyboard */; };
 		CE5866811EEA8CF700A11B82 /* SpriteKitGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5866801EEA8CF700A11B82 /* SpriteKitGameTests.swift */; };
 		CE58668C1EEA8CF800A11B82 /* SpriteKitGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58668B1EEA8CF800A11B82 /* SpriteKitGameUITests.swift */; };
+		CEAB89E91EEF8936008C8504 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = CEAB89E81EEF8936008C8504 /* ground.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		CE5866871EEA8CF800A11B82 /* SpriteKitGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpriteKitGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE58668B1EEA8CF800A11B82 /* SpriteKitGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitGameUITests.swift; sourceTree = "<group>"; };
 		CE58668D1EEA8CF800A11B82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEAB89E81EEF8936008C8504 /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		CE5866661EEA8CF600A11B82 /* SpriteKitGame */ = {
 			isa = PBXGroup;
 			children = (
+				CEAB89EB1EEF89A9008C8504 /* Resources */,
 				CE5866671EEA8CF700A11B82 /* AppDelegate.swift */,
 				CE5866691EEA8CF700A11B82 /* GameScene.sks */,
 				CE58666B1EEA8CF700A11B82 /* Actions.sks */,
@@ -131,6 +134,14 @@
 				CE58668D1EEA8CF800A11B82 /* Info.plist */,
 			);
 			path = SpriteKitGameUITests;
+			sourceTree = "<group>";
+		};
+		CEAB89EB1EEF89A9008C8504 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CEAB89E81EEF8936008C8504 /* ground.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +252,7 @@
 				CE5866721EEA8CF700A11B82 /* Assets.xcassets in Resources */,
 				CE58666C1EEA8CF700A11B82 /* Actions.sks in Resources */,
 				CE5866751EEA8CF700A11B82 /* Main.storyboard in Resources */,
+				CEAB89E91EEF8936008C8504 /* ground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +539,7 @@
 				CE5866921EEA8CF800A11B82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE5866931EEA8CF800A11B82 /* Build configuration list for PBXNativeTarget "SpriteKitGameTests" */ = {
 			isa = XCConfigurationList;
@@ -535,6 +548,7 @@
 				CE5866951EEA8CF800A11B82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE5866961EEA8CF800A11B82 /* Build configuration list for PBXNativeTarget "SpriteKitGameUITests" */ = {
 			isa = XCConfigurationList;
@@ -543,6 +557,7 @@
 				CE5866981EEA8CF800A11B82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
