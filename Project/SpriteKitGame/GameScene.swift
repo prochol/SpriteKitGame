@@ -11,11 +11,16 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    private var personTexture: SKTexture = SKTexture(image: #imageLiteral(resourceName: "idle_1"))
+    private var personNode: SKSpriteNode!
+    
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     private var ground : SKSpriteNode?
         
     override func didMove(to view: SKView) {
+        personNode = SKSpriteNode(texture: personTexture)
+        self.addChild(personNode)
         
         self.ground = self.childNode(withName: "//ground") as? SKSpriteNode
         
@@ -87,8 +92,7 @@ class GameScene: SKScene {
             print("keyDown: \(event.characters!) keyCode: \(event.keyCode)")
         }
     }
-    
-    
+        
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
     }
