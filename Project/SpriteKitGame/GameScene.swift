@@ -20,6 +20,7 @@ class GameScene: SKScene {
         
     override func didMove(to view: SKView) {
         personNode = SKSpriteNode(texture: personTexture)
+        personNode.anchorPoint = CGPoint(x: 0.5, y: 0)
         self.addChild(personNode)
         
         self.ground = self.childNode(withName: "//ground") as? SKSpriteNode
