@@ -14,7 +14,6 @@ class GameScene: SKScene {
     private var personTexture: SKTexture = SKTexture(image: #imageLiteral(resourceName: "idle_1"))
     private var personNode: SKSpriteNode!
     
-    private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     private var ground : SKSpriteNode?
         
@@ -27,11 +26,10 @@ class GameScene: SKScene {
         self.ground = self.childNode(withName: "//ground") as? SKSpriteNode
         
         // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
+//        if let label = self.childNode(withName: "//helloLabel") as? SKLabelNode {
+//            label.alpha = 0.0
+//            label.run(SKAction.fadeIn(withDuration: 2.0))
+//        }
         
         // Create shape node to use during mouse interaction
         let w = (self.size.width + self.size.height) * 0.05
@@ -89,10 +87,10 @@ class GameScene: SKScene {
     
     override func keyDown(with event: NSEvent) {
         switch event.keyCode {
-        case 0x31:
-            if let label = self.label {
-                label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-            }
+//        case 0x31:
+//            if let label = self.label {
+//                label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
+//            }
         default:
             print("keyDown: \(event.characters!) keyCode: \(event.keyCode)")
         }
