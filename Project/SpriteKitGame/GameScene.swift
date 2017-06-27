@@ -70,6 +70,9 @@ class GameScene: SKScene {
             n.strokeColor = SKColor.red
             self.addChild(n)
         }
+        
+        let idleAction = getIdleAction()
+        personNode.run(idleAction)
     }
     
     override func mouseDown(with event: NSEvent) {
@@ -97,5 +100,12 @@ class GameScene: SKScene {
         
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+    }
+    
+    func getIdleAction() -> SKAction {
+        let textures: [SKTexture] = [SKTexture(image: #imageLiteral(resourceName: "idle_1")), SKTexture(image: #imageLiteral(resourceName: "idle_2")), SKTexture(image: #imageLiteral(resourceName: "idle_3")), SKTexture(image: #imageLiteral(resourceName: "idle_2")), SKTexture(image: #imageLiteral(resourceName: "idle_1"))]
+        
+        let idleAction = SKAction.animate(with: textures, timePerFrame: 0.05)
+        return idleAction
     }
 }
