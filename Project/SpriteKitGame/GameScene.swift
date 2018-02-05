@@ -52,6 +52,9 @@ class GameScene: SKScene {
             n.strokeColor = SKColor.green
             self.addChild(n)
         }
+        
+        let turnAction = getTurnAction()
+        personNode.run(turnAction)
     }
     
     func touchMoved(toPoint pos : CGPoint) {
@@ -105,5 +108,12 @@ class GameScene: SKScene {
         
         let idleAction = SKAction.animate(with: textures, timePerFrame: 0.05)
         return idleAction
+    }
+    
+    func getTurnAction() -> SKAction {
+        let textures: [SKTexture] = [SKTexture(image: #imageLiteral(resourceName: "turn_1")), SKTexture(image: #imageLiteral(resourceName: "turn_2")), SKTexture(image: #imageLiteral(resourceName: "turn_3"))]
+        
+        let turnAction = SKAction.animate(with: textures, timePerFrame: 0.05)
+        return turnAction
     }
 }
