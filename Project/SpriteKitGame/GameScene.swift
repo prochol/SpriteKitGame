@@ -63,6 +63,9 @@ class GameScene: SKScene {
             n.strokeColor = SKColor.blue
             self.addChild(n)
         }
+        
+        let walkAction = getWalkAction()
+        personNode.run(walkAction)
     }
     
     func touchUp(atPoint pos : CGPoint) {
@@ -112,6 +115,13 @@ class GameScene: SKScene {
     
     func getTurnAction() -> SKAction {
         let textures: [SKTexture] = [SKTexture(image: #imageLiteral(resourceName: "turn_1")), SKTexture(image: #imageLiteral(resourceName: "turn_2")), SKTexture(image: #imageLiteral(resourceName: "turn_3"))]
+        
+        let turnAction = SKAction.animate(with: textures, timePerFrame: 0.05)
+        return turnAction
+    }
+    
+    func getWalkAction() -> SKAction {
+        let textures: [SKTexture] = [SKTexture(image: #imageLiteral(resourceName: "walk_1")), SKTexture(image: #imageLiteral(resourceName: "walk_2")), SKTexture(image: #imageLiteral(resourceName: "walk_3")), SKTexture(image: #imageLiteral(resourceName: "walk_4")), SKTexture(image: #imageLiteral(resourceName: "walk_5")), SKTexture(image: #imageLiteral(resourceName: "walk_6"))]
         
         let turnAction = SKAction.animate(with: textures, timePerFrame: 0.05)
         return turnAction
