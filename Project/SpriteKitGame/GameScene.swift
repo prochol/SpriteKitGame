@@ -53,15 +53,18 @@ class GameScene: SKScene {
             self.addChild(n)
         }
         
-        let turnAction = getTurnAction()
-        personNode.run(turnAction)
+        let turnInAction = getTurnInAction()
+        let walkAction = getWalkAction()
+        personNode.run(turnInAction) {
+            self.personNode.run(walkAction)
+        }
     }
     
     func touchMoved(toPoint pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
             n.position = pos
-            n.strokeColor = SKColor.blue
-            self.addChild(n)
+            //n.strokeColor = SKColor.blue
+            //self.addChild(n)
         }
         
         let walkAction = getWalkAction()
@@ -75,8 +78,11 @@ class GameScene: SKScene {
             self.addChild(n)
         }
         
+        let turnOutAction = getTurnOutAction()
         let idleAction = getIdleAction()
-        personNode.run(idleAction)
+        personNode.run(turnOutAction) {
+            self.personNode.run(idleAction)
+        }
     }
     
     override func mouseDown(with event: NSEvent) {
@@ -113,8 +119,15 @@ class GameScene: SKScene {
         return idleAction
     }
     
-    func getTurnAction() -> SKAction {
+    func getTurnInAction() -> SKAction {
         let textures: [SKTexture] = [SKTexture(image: #imageLiteral(resourceName: "turn_1")), SKTexture(image: #imageLiteral(resourceName: "turn_2")), SKTexture(image: #imageLiteral(resourceName: "turn_3"))]
+        
+        let turnAction = SKAction.animate(with: textures, timePerFrame: 0.05)
+        return turnAction
+    }
+    
+    func getTurnOutAction() -> SKAction {
+        let textures: [SKTexture] = [SKTexture(image: #imageLiteral(resourceName: "turn_3")), SKTexture(image: #imageLiteral(resourceName: "turn_2")), SKTexture(image: #imageLiteral(resourceName: "turn_1"))]
         
         let turnAction = SKAction.animate(with: textures, timePerFrame: 0.05)
         return turnAction
