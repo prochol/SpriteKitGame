@@ -26,7 +26,7 @@ extension SKTexture {
                                      #imageLiteral(resourceName: "walk_6")]
 
 
-    class func idleActionTextures() -> [SKTexture] {
+    static var idleActionTextures: [SKTexture] {
         var images = [NSImage]()
         var imagesNextIterator = idleImages.makeIterator()
         var imagesReversedIterator = imagesNextIterator.reversed().makeIterator()
@@ -42,17 +42,16 @@ extension SKTexture {
         return images.map { SKTexture(image: $0) }
     }
 
-    class func turnInActionTextures() -> [SKTexture] {
+    static var turnInActionTextures: [SKTexture] {
         return turnImages.map { SKTexture(image: $0) }
     }
 
-    class func turnOutActionTextures() -> [SKTexture] {
-        var images = turnImages.makeIterator().reversed()
-
+    static var turnOutActionTextures: [SKTexture] {
+        let images = turnImages.makeIterator().reversed()
         return images.map { SKTexture(image: $0) }
     }
 
-    class func walkActionTextures() -> [SKTexture] {
+    static var walkActionTextures: [SKTexture] {
         return walkImages.map { SKTexture(image: $0) }
     }
 }

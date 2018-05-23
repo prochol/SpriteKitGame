@@ -112,28 +112,28 @@ class GameScene: SKScene {
     }
 
     private func getIdleAction() -> SKAction {
-        let textures: [SKTexture] = SKTexture.idleActionTextures()
+        let textures: [SKTexture] = SKTexture.idleActionTextures
         
         let idleAction = SKAction.animate(with: textures, timePerFrame: 0.05)
         return idleAction
     }
 
     private func getTurnInAction() -> SKAction {
-        let textures: [SKTexture] = SKTexture.turnInActionTextures()
+        let textures: [SKTexture] = SKTexture.turnInActionTextures
         
         let turnAction = SKAction.animate(with: textures, timePerFrame: 0.05)
         return turnAction
     }
 
     private func getTurnOutAction() -> SKAction {
-        let textures: [SKTexture] = SKTexture.turnOutActionTextures()
+        let textures: [SKTexture] = SKTexture.turnOutActionTextures
         
         let turnAction = SKAction.animate(with: textures, timePerFrame: 0.05)
         return turnAction
     }
 
     private func getWalkAction() -> SKAction {
-        let textures: [SKTexture] = SKTexture.walkActionTextures()
+        let textures: [SKTexture] = SKTexture.walkActionTextures
         
         let walkAction = SKAction.animate(with: textures, timePerFrame: 0.05)
         return walkAction
