@@ -27,31 +27,32 @@ extension SKTexture {
 
 
     class func idleActionTextures() -> [SKTexture] {
-        return [SKTexture(image: idleImages.first!),
-                SKTexture(image: idleImages[1]),
-                SKTexture(image: idleImages.last!),
-                SKTexture(image: idleImages[1]),
-                SKTexture(image: idleImages.first!)]
+        var images = [NSImage]()
+        var imagesNextIterator = idleImages.makeIterator()
+        var imagesReversedIterator = imagesNextIterator.reversed().makeIterator()
+        while let image = imagesNextIterator.next() {
+            images.append(image)
+        }
+        while let image = imagesReversedIterator.next() {
+            if image != images.last {
+                images.append(image)
+            }
+        }
+
+        return images.map { SKTexture(image: $0) }
     }
 
     class func turnInActionTextures() -> [SKTexture] {
-        return [SKTexture(image: turnImages.first!),
-                SKTexture(image:turnImages[1]),
-                SKTexture(image: turnImages.last!)]
+        return turnImages.map { SKTexture(image: $0) }
     }
 
     class func turnOutActionTextures() -> [SKTexture] {
-        return [SKTexture(image: turnImages.last!),
-                SKTexture(image: turnImages[1]),
-                SKTexture(image: turnImages.first!)]
+        var images = turnImages.makeIterator().reversed()
+
+        return images.map { SKTexture(image: $0) }
     }
 
     class func walkActionTextures() -> [SKTexture] {
-        return [SKTexture(image: walkImages.first!),
-                SKTexture(image: walkImages[1]),
-                SKTexture(image: walkImages[2]),
-                SKTexture(image: walkImages[3]),
-                SKTexture(image: walkImages[4]),
-                SKTexture(image: walkImages.last!)]
+        return walkImages.map { SKTexture(image: $0) }
     }
 }
