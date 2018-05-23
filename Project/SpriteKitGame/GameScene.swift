@@ -11,26 +11,22 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    private var personTexture: SKTexture = SKTexture(image: #imageLiteral(resourceName: "idle_1"))
+    private let personTexture: SKTexture = SKTexture(image: #imageLiteral(resourceName: "idle_1"))
     private var personNode: SKSpriteNode!
+    
+    private var targetXPostion: CGFloat!
     
     private var spinnyNode : SKShapeNode?
     private var ground : SKSpriteNode?
         
     override func didMove(to view: SKView) {
+        self.ground = self.childNode(withName: "//ground") as? SKSpriteNode
+
         personNode = SKSpriteNode(texture: personTexture)
         personNode.anchorPoint = CGPoint(x: 0.5, y: 0)
         personNode.position = CGPoint(x: -size.width/2 + personTexture.size().width, y: -size.height/2)
         self.addChild(personNode)
-        
-        self.ground = self.childNode(withName: "//ground") as? SKSpriteNode
-        
-        // Get label node from scene and store it for use later
-//        if let label = self.childNode(withName: "//helloLabel") as? SKLabelNode {
-//            label.alpha = 0.0
-//            label.run(SKAction.fadeIn(withDuration: 2.0))
-//        }
-        
+
         // Create shape node to use during mouse interaction
         let w = (self.size.width + self.size.height) * 0.05
         self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
@@ -45,45 +41,7 @@ class GameScene: SKScene {
         }
     }
     
-    
-    func touchDown(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.green
-            self.addChild(n)
-        }
-        
-        let turnInAction = getTurnInAction()
-        let walkAction = getWalkAction()
-        personNode.run(turnInAction) {
-            self.personNode.run(walkAction)
-        }
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            //n.strokeColor = SKColor.blue
-            //self.addChild(n)
-        }
-        
-        let walkAction = getWalkAction()
-        personNode.run(walkAction)
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.red
-            self.addChild(n)
-        }
-        
-        let turnOutAction = getTurnOutAction()
-        let idleAction = getIdleAction()
-        personNode.run(turnOutAction) {
-            self.personNode.run(idleAction)
-        }
-    }
+
     
     override func mouseDown(with event: NSEvent) {
         self.touchDown(atPoint: event.location(in: self))
@@ -111,32 +69,73 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
     }
-    
-    func getIdleAction() -> SKAction {
-        let textures: [SKTexture] = [SKTexture(image: #imageLiteral(resourceName: "idle_1")), SKTexture(image: #imageLiteral(resourceName: "idle_2")), SKTexture(image: #imageLiteral(resourceName: "idle_3")), SKTexture(image: #imageLiteral(resourceName: "idle_2")), SKTexture(image: #imageLiteral(resourceName: "idle_1"))]
+
+    // MARK: - private functions
+
+    private func touchDown(atPoint pos : CGPoint) {
+
+        targetXPostion = pos.x
+        print("new target position X: \(targetXPostion)")
+
+        let turnInAction = getTurnInAction()
+        let walkAction = getWalkAction()
+        personNode.run(SKAction.sequence([turnInAction, walkAction]))
+    }
+
+    private func touchMoved(toPoint pos : CGPoint) {
+//        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
+//            n.position = pos
+//            n.strokeColor = SKColor.blue
+//            self.addChild(n)
+
+        targetXPostion = pos.x
+        print("new target position X: \(targetXPostion)")
+//        }
+
+//        let walkAction = getWalkAction()
+//        personNode.run(walkAction)
+    }
+
+    private func touchUp(atPoint pos : CGPoint) {
+//        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
+//            n.position = pos
+//            n.strokeColor = SKColor.red
+//            self.addChild(n)
+
+        targetXPostion = pos.x
+        print("new target position X: \(targetXPostion)")
+//        }
+
+        let turnOutAction = getTurnOutAction()
+        let idleAction = getIdleAction()
+        personNode.run(SKAction.sequence([turnOutAction, idleAction]))
+    }
+
+    private func getIdleAction() -> SKAction {
+        let textures: [SKTexture] = SKTexture.idleActionTextures()
         
         let idleAction = SKAction.animate(with: textures, timePerFrame: 0.05)
         return idleAction
     }
-    
-    func getTurnInAction() -> SKAction {
-        let textures: [SKTexture] = [SKTexture(image: #imageLiteral(resourceName: "turn_1")), SKTexture(image: #imageLiteral(resourceName: "turn_2")), SKTexture(image: #imageLiteral(resourceName: "turn_3"))]
+
+    private func getTurnInAction() -> SKAction {
+        let textures: [SKTexture] = SKTexture.turnInActionTextures()
         
         let turnAction = SKAction.animate(with: textures, timePerFrame: 0.05)
         return turnAction
     }
-    
-    func getTurnOutAction() -> SKAction {
-        let textures: [SKTexture] = [SKTexture(image: #imageLiteral(resourceName: "turn_3")), SKTexture(image: #imageLiteral(resourceName: "turn_2")), SKTexture(image: #imageLiteral(resourceName: "turn_1"))]
+
+    private func getTurnOutAction() -> SKAction {
+        let textures: [SKTexture] = SKTexture.turnOutActionTextures()
         
         let turnAction = SKAction.animate(with: textures, timePerFrame: 0.05)
         return turnAction
     }
-    
-    func getWalkAction() -> SKAction {
-        let textures: [SKTexture] = [SKTexture(image: #imageLiteral(resourceName: "walk_1")), SKTexture(image: #imageLiteral(resourceName: "walk_2")), SKTexture(image: #imageLiteral(resourceName: "walk_3")), SKTexture(image: #imageLiteral(resourceName: "walk_4")), SKTexture(image: #imageLiteral(resourceName: "walk_5")), SKTexture(image: #imageLiteral(resourceName: "walk_6"))]
+
+    private func getWalkAction() -> SKAction {
+        let textures: [SKTexture] = SKTexture.walkActionTextures()
         
-        let turnAction = SKAction.animate(with: textures, timePerFrame: 0.05)
-        return turnAction
+        let walkAction = SKAction.animate(with: textures, timePerFrame: 0.05)
+        return walkAction
     }
 }
