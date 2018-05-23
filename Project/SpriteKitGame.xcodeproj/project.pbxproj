@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		36EBC76A515B4A60AEAEB129 /* SKTexture+actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EBC27E2D80C3646E2C0492 /* SKTexture+actions.swift */; };
+		36EBC9B14ABCCFBF6FDC05FF /* SKAction+personActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EBCC625C4301248C65AB4A /* SKAction+personActions.swift */; };
 		CE2862EE1EF3CB3000F4FBFE /* Sprites.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2862ED1EF3CB3000F4FBFE /* Sprites.xcassets */; };
 		CE5866681EEA8CF700A11B82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5866671EEA8CF700A11B82 /* AppDelegate.swift */; };
 		CE58666A1EEA8CF700A11B82 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE5866691EEA8CF700A11B82 /* GameScene.sks */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		36EBC27E2D80C3646E2C0492 /* SKTexture+actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKTexture+actions.swift"; sourceTree = "<group>"; };
+		36EBCC625C4301248C65AB4A /* SKAction+personActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKAction+personActions.swift"; sourceTree = "<group>"; };
 		CE2862ED1EF3CB3000F4FBFE /* Sprites.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Sprites.xcassets; sourceTree = "<group>"; };
 		CE5866641EEA8CF600A11B82 /* SpriteKitGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteKitGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5866671EEA8CF700A11B82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				36EBC27E2D80C3646E2C0492 /* SKTexture+actions.swift */,
+				36EBCC625C4301248C65AB4A /* SKAction+personActions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				CE58666E1EEA8CF700A11B82 /* GameScene.swift in Sources */,
 				CE5866681EEA8CF700A11B82 /* AppDelegate.swift in Sources */,
 				36EBC76A515B4A60AEAEB129 /* SKTexture+actions.swift in Sources */,
+				36EBC9B14ABCCFBF6FDC05FF /* SKAction+personActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
