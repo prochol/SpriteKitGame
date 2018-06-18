@@ -73,41 +73,41 @@ class GameScene: SKScene {
     // MARK: - private functions
 
     private func touchDown(atPoint pos : CGPoint) {
-
         targetXPostion = pos.x
+        print("Down")
         print("new target position X: \(targetXPostion)")
-
-        let turnInAction = SKAction.getTurnInAction()
-        let walkAction = SKAction.getWalkAction()
-        personNode.run(SKAction.sequence([turnInAction, walkAction]))
     }
 
     private func touchMoved(toPoint pos : CGPoint) {
-//        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-//            n.position = pos
-//            n.strokeColor = SKColor.blue
-//            self.addChild(n)
-
         targetXPostion = pos.x
+        print("Moved")
         print("new target position X: \(targetXPostion)")
-//        }
-
-//        let walkAction = getWalkAction()
-//        personNode.run(walkAction)
     }
 
     private func touchUp(atPoint pos : CGPoint) {
-//        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-//            n.position = pos
-//            n.strokeColor = SKColor.red
-//            self.addChild(n)
-
         targetXPostion = pos.x
+        print("Up")
         print("new target position X: \(targetXPostion)")
-//        }
 
-        let turnOutAction = SKAction.getTurnOutAction()
-        let idleAction = SKAction.getIdleAction()
-        personNode.run(SKAction.sequence([turnOutAction, idleAction]))
+        let turnInAction = SKAction.getTurnInAction()
+
+        personNode.run(SKAction.sequence([turnInAction])) {
+            self.walkAction(to: self.targetXPostion)
+        }
+    }
+
+    private func walkAction(to x: CGFloat) {
+        let walkAction = SKAction.repeat(SKAction.getWalkAction(), count: 7)
+        let movedAction = self.movedAction(to: self.targetXPostion)
+
+        personNode.run(SKAction.group([walkAction, movedAction])) {
+            let turnOutAction = SKAction.getTurnOutAction()
+            let idleAction = SKAction.getIdleAction()
+            self.personNode.run(SKAction.sequence([turnOutAction, idleAction]))
+        }
+    }
+
+    private func movedAction(to x: CGFloat) -> SKAction {
+        return SKAction.moveTo(x: x, duration: 2.1)
     }
 }

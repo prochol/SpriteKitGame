@@ -13,7 +13,7 @@ extension SKAction {
     private static let timePerFrame = 0.05
 
     class func getIdleAction() -> SKAction {
-        let textures: [SKTexture] = SKTexture.turnInActionTextures
+        let textures: [SKTexture] = SKTexture.idleActionTextures
         return SKAction.animate(with: textures, timePerFrame: SKAction.timePerFrame)
     }
 
