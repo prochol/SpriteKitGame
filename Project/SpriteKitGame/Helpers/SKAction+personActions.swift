@@ -27,8 +27,13 @@ extension SKAction {
         return SKAction.animate(with: textures, timePerFrame: SKAction.timePerFrame)
     }
 
-    class func getWalkAction() -> SKAction {
-        let textures: [SKTexture] = SKTexture.walkActionTextures
+    class func getWalkLeftAction() -> SKAction {
+        let textures: [SKTexture] = SKTexture.walkLeftActionTextures
+        return SKAction.animate(with: textures, timePerFrame: SKAction.timePerFrame)
+    }
+
+    class func getWalkRightAction() -> SKAction {
+        let textures: [SKTexture] = SKTexture.walkRightActionTextures
         return SKAction.animate(with: textures, timePerFrame: SKAction.timePerFrame)
     }
 }

@@ -97,7 +97,7 @@ class GameScene: SKScene {
     }
 
     private func walkAction(to x: CGFloat) {
-        let walkAction = SKAction.repeat(SKAction.getWalkAction(), count: 7)
+        let walkAction = SKAction.repeat(SKAction.getWalkLeftAction(), count: 7)
         let movedAction = self.movedAction(to: self.targetXPostion)
 
         personNode.run(SKAction.group([walkAction, movedAction])) {
