@@ -14,9 +14,13 @@ extension SKTexture {
                                      #imageLiteral(resourceName: "idle_2"),
                                      #imageLiteral(resourceName: "idle_3")]
 
-    private static let turnImages = [#imageLiteral(resourceName: "turn_1"),
-                                       #imageLiteral(resourceName: "turn_2"),
-                                       #imageLiteral(resourceName: "turn_3")]
+    private static let turnLeftImages = [#imageLiteral(resourceName: "turnLeft_1"),
+                                         #imageLiteral(resourceName: "turnLeft_2"),
+                                         #imageLiteral(resourceName: "turnLeft_3")]
+    
+    private static let turnRightImages = [#imageLiteral(resourceName: "turnRight_1"),
+                                          #imageLiteral(resourceName: "turnRight_2"),
+                                          #imageLiteral(resourceName: "turnRight_3")]
 
     private static let walkLeftImages = [#imageLiteral(resourceName: "walkLeft_1"),
                                          #imageLiteral(resourceName: "walkLeft_2"),
@@ -48,12 +52,21 @@ extension SKTexture {
         return images.map { SKTexture(image: $0) }
     }
 
-    static var turnInActionTextures: [SKTexture] {
-        return turnImages.map { SKTexture(image: $0) }
+    static var turnInLeftActionTextures: [SKTexture] {
+        return turnLeftImages.map { SKTexture(image: $0) }
     }
 
-    static var turnOutActionTextures: [SKTexture] {
-        let images = turnImages.makeIterator().reversed()
+    static var turnOutLeftActionTextures: [SKTexture] {
+        let images = turnLeftImages.makeIterator().reversed()
+        return images.map { SKTexture(image: $0) }
+    }
+
+    static var turnInRightActionTextures: [SKTexture] {
+        return turnRightImages.map { SKTexture(image: $0) }
+    }
+
+    static var turnOutRightActionTextures: [SKTexture] {
+        let images = turnRightImages.makeIterator().reversed()
         return images.map { SKTexture(image: $0) }
     }
 

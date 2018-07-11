@@ -89,23 +89,27 @@ class GameScene: SKScene {
         print("Up")
         print("new target position X: \(targetXPostion)")
 
-        let turnInAction = SKAction.getTurnInAction()
-
-        personNode.run(SKAction.sequence([turnInAction])) {
+        var turnInAction = SKAction.getTurnInLeftAction()
+        if personNode.position.x < targetXPostion {
+            turnInAction = SKAction.getTurnInRightAction()
+        }
+        
+        personNode.run(turnInAction) {
             self.walkAction(to: self.targetXPostion)
         }
     }
 
     private func walkAction(to x: CGFloat) {
         var walkAction = SKAction.repeat(SKAction.getWalkLeftAction(), count: 7)
-        if personNode.position.x > x {
+        var turnOutAction = SKAction.getTurnOutLeftAction()
+        if personNode.position.x < x {
             walkAction = SKAction.repeat(SKAction.getWalkRightAction(), count: 7)
+            turnOutAction = SKAction.getTurnOutRightAction()
         }
         
         let movedAction = self.movedAction(to: self.targetXPostion)
 
         personNode.run(SKAction.group([walkAction, movedAction])) {
-            let turnOutAction = SKAction.getTurnOutAction()
             let idleAction = SKAction.getIdleAction()
             self.personNode.run(SKAction.sequence([turnOutAction, idleAction]))
         }

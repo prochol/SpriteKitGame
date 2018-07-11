@@ -17,13 +17,23 @@ extension SKAction {
         return SKAction.animate(with: textures, timePerFrame: SKAction.timePerFrame)
     }
 
-    class func getTurnInAction() -> SKAction {
-        let textures: [SKTexture] = SKTexture.turnInActionTextures
+    class func getTurnInLeftAction() -> SKAction {
+        let textures: [SKTexture] = SKTexture.turnInLeftActionTextures
+        return SKAction.animate(with: textures, timePerFrame: SKAction.timePerFrame)
+    }
+    
+    class func getTurnOutLeftAction() -> SKAction {
+        let textures: [SKTexture] = SKTexture.turnOutLeftActionTextures
+        return SKAction.animate(with: textures, timePerFrame: SKAction.timePerFrame)
+    }
+    
+    class func getTurnInRightAction() -> SKAction {
+        let textures: [SKTexture] = SKTexture.turnInRightActionTextures
         return SKAction.animate(with: textures, timePerFrame: SKAction.timePerFrame)
     }
 
-    class func getTurnOutAction() -> SKAction {
-        let textures: [SKTexture] = SKTexture.turnOutActionTextures
+    class func getTurnOutRightAction() -> SKAction {
+        let textures: [SKTexture] = SKTexture.turnOutRightActionTextures
         return SKAction.animate(with: textures, timePerFrame: SKAction.timePerFrame)
     }
 
