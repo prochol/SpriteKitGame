@@ -16,8 +16,10 @@ class GameScene: SKScene {
     
     private var targetXPostion: CGFloat!
     
-    private var spinnyNode : SKShapeNode?
-    private var ground : SKSpriteNode?
+    private var spinnyNode: SKShapeNode?
+    private var ground: SKSpriteNode?
+
+    private var oneStepLength: CGFloat = 0
         
     override func didMove(to view: SKView) {
         self.ground = self.childNode(withName: "//ground") as? SKSpriteNode
@@ -26,6 +28,8 @@ class GameScene: SKScene {
         personNode.anchorPoint = CGPoint(x: 0.5, y: 0)
         personNode.position = CGPoint(x: -size.width/2 + personTexture.size().width, y: -size.height/2)
         self.addChild(personNode)
+
+        oneStepLength = personTexture.size().width/2
 
         // Create shape node to use during mouse interaction
         let w = (self.size.width + self.size.height) * 0.05
@@ -100,22 +104,22 @@ class GameScene: SKScene {
     }
 
     private func walkAction(to x: CGFloat) {
-        var walkAction = SKAction.repeat(SKAction.getWalkLeftAction(), count: 7)
+        let pathLength = personNode.position.x < x ? x - personNode.position.x : personNode.position.x - x
+        let countSteps: Int = Int(pathLength / oneStepLength)
+        let countStep = CGFloat(countSteps) * oneStepLength < pathLength ? countSteps + 1 : countSteps
+
+        var walkAction = SKAction.repeat(SKAction.getWalkLeftAction(), count: countStep)
         var turnOutAction = SKAction.getTurnOutLeftAction()
         if personNode.position.x < x {
-            walkAction = SKAction.repeat(SKAction.getWalkRightAction(), count: 7)
+            walkAction = SKAction.repeat(SKAction.getWalkRightAction(), count: countStep)
             turnOutAction = SKAction.getTurnOutRightAction()
         }
-        
-        let movedAction = self.movedAction(to: self.targetXPostion)
+
+        let movedAction = SKAction.moveTo(x: x, duration: walkAction.duration)
 
         personNode.run(SKAction.group([walkAction, movedAction])) {
             let idleAction = SKAction.getIdleAction()
             self.personNode.run(SKAction.sequence([turnOutAction, idleAction]))
         }
-    }
-
-    private func movedAction(to x: CGFloat) -> SKAction {
-        return SKAction.moveTo(x: x, duration: 2.1)
     }
 }
