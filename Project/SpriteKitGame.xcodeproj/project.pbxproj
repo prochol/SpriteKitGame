@@ -10,6 +10,10 @@
 		36EBC76A515B4A60AEAEB129 /* SKTexture+actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EBC27E2D80C3646E2C0492 /* SKTexture+actions.swift */; };
 		36EBC9B14ABCCFBF6FDC05FF /* SKAction+personActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EBCC625C4301248C65AB4A /* SKAction+personActions.swift */; };
 		CE2862EE1EF3CB3000F4FBFE /* Sprites.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE2862ED1EF3CB3000F4FBFE /* Sprites.xcassets */; };
+		CE4D24FF2142513800E78674 /* TetraminoScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE4D24FE2142513700E78674 /* TetraminoScene.sks */; };
+		CE4D2501214255B900E78674 /* TetraminoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4D2500214255B900E78674 /* TetraminoScene.swift */; };
+		CE4D250421425E1600E78674 /* TetraminoTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE4D250221425E1600E78674 /* TetraminoTileSet.sks */; };
+		CE4D250521425E1600E78674 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE4D250321425E1600E78674 /* Assets.xcassets */; };
 		CE5866681EEA8CF700A11B82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5866671EEA8CF700A11B82 /* AppDelegate.swift */; };
 		CE58666A1EEA8CF700A11B82 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE5866691EEA8CF700A11B82 /* GameScene.sks */; };
 		CE58666C1EEA8CF700A11B82 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = CE58666B1EEA8CF700A11B82 /* Actions.sks */; };
@@ -42,6 +46,10 @@
 		36EBC27E2D80C3646E2C0492 /* SKTexture+actions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKTexture+actions.swift"; sourceTree = "<group>"; };
 		36EBCC625C4301248C65AB4A /* SKAction+personActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SKAction+personActions.swift"; sourceTree = "<group>"; };
 		CE2862ED1EF3CB3000F4FBFE /* Sprites.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Sprites.xcassets; sourceTree = "<group>"; };
+		CE4D24FE2142513700E78674 /* TetraminoScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TetraminoScene.sks; sourceTree = "<group>"; };
+		CE4D2500214255B900E78674 /* TetraminoScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TetraminoScene.swift; sourceTree = "<group>"; };
+		CE4D250221425E1600E78674 /* TetraminoTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TetraminoTileSet.sks; sourceTree = "<group>"; };
+		CE4D250321425E1600E78674 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE5866641EEA8CF600A11B82 /* SpriteKitGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteKitGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE5866671EEA8CF700A11B82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE5866691EEA8CF700A11B82 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -117,11 +125,13 @@
 		CE5866661EEA8CF600A11B82 /* SpriteKitGame */ = {
 			isa = PBXGroup;
 			children = (
+				CE4D24FE2142513700E78674 /* TetraminoScene.sks */,
 				CEAB89EB1EEF89A9008C8504 /* Resources */,
 				CE5866671EEA8CF700A11B82 /* AppDelegate.swift */,
 				CE5866691EEA8CF700A11B82 /* GameScene.sks */,
 				CE58666B1EEA8CF700A11B82 /* Actions.sks */,
 				CE58666D1EEA8CF700A11B82 /* GameScene.swift */,
+				CE4D2500214255B900E78674 /* TetraminoScene.swift */,
 				CE58666F1EEA8CF700A11B82 /* ViewController.swift */,
 				CE5866711EEA8CF700A11B82 /* Assets.xcassets */,
 				CE5866731EEA8CF700A11B82 /* Main.storyboard */,
@@ -154,6 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				CE2862ED1EF3CB3000F4FBFE /* Sprites.xcassets */,
+				CE4D250221425E1600E78674 /* TetraminoTileSet.sks */,
+				CE4D250321425E1600E78674 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -264,9 +276,12 @@
 			files = (
 				CE2862EE1EF3CB3000F4FBFE /* Sprites.xcassets in Resources */,
 				CE58666A1EEA8CF700A11B82 /* GameScene.sks in Resources */,
+				CE4D24FF2142513800E78674 /* TetraminoScene.sks in Resources */,
 				CE5866721EEA8CF700A11B82 /* Assets.xcassets in Resources */,
 				CE58666C1EEA8CF700A11B82 /* Actions.sks in Resources */,
 				CE5866751EEA8CF700A11B82 /* Main.storyboard in Resources */,
+				CE4D250521425E1600E78674 /* Assets.xcassets in Resources */,
+				CE4D250421425E1600E78674 /* TetraminoTileSet.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4D2501214255B900E78674 /* TetraminoScene.swift in Sources */,
 				CE5866701EEA8CF700A11B82 /* ViewController.swift in Sources */,
 				CE58666E1EEA8CF700A11B82 /* GameScene.swift in Sources */,
 				CE5866681EEA8CF700A11B82 /* AppDelegate.swift in Sources */,
