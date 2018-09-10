@@ -23,7 +23,7 @@
 		CE5866751EEA8CF700A11B82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5866731EEA8CF700A11B82 /* Main.storyboard */; };
 		CE5866811EEA8CF700A11B82 /* SpriteKitGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5866801EEA8CF700A11B82 /* SpriteKitGameTests.swift */; };
 		CE58668C1EEA8CF800A11B82 /* SpriteKitGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58668B1EEA8CF800A11B82 /* SpriteKitGameUITests.swift */; };
-		CEF1508421461B9C00A7319B /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1508321461B9C00A7319B /* Figure.swift */; };
+		CEF1508421461B9C00A7319B /* SKSpriteNode+Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1508321461B9C00A7319B /* SKSpriteNode+Figure.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +67,7 @@
 		CE5866871EEA8CF800A11B82 /* SpriteKitGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpriteKitGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE58668B1EEA8CF800A11B82 /* SpriteKitGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitGameUITests.swift; sourceTree = "<group>"; };
 		CE58668D1EEA8CF800A11B82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CEF1508321461B9C00A7319B /* Figure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figure.swift; sourceTree = "<group>"; };
+		CEF1508321461B9C00A7319B /* SKSpriteNode+Figure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKSpriteNode+Figure.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +98,7 @@
 		36EBC0645BDAD77183DB1564 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CEF1508321461B9C00A7319B /* SKSpriteNode+Figure.swift */,
 				36EBC27E2D80C3646E2C0492 /* SKTexture+actions.swift */,
 				36EBCC625C4301248C65AB4A /* SKAction+personActions.swift */,
 			);
@@ -184,7 +185,6 @@
 		CEF1508221461B6100A7319B /* Figures */ = {
 			isa = PBXGroup;
 			children = (
-				CEF1508321461B9C00A7319B /* Figure.swift */,
 			);
 			path = Figures;
 			sourceTree = "<group>";
@@ -330,7 +330,7 @@
 				CE58666E1EEA8CF700A11B82 /* GameScene.swift in Sources */,
 				CE5866681EEA8CF700A11B82 /* AppDelegate.swift in Sources */,
 				36EBC76A515B4A60AEAEB129 /* SKTexture+actions.swift in Sources */,
-				CEF1508421461B9C00A7319B /* Figure.swift in Sources */,
+				CEF1508421461B9C00A7319B /* SKSpriteNode+Figure.swift in Sources */,
 				36EBC9B14ABCCFBF6FDC05FF /* SKAction+personActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

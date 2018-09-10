@@ -11,8 +11,6 @@ import GameplayKit
 
 class TetraminoScene: SKScene {
     
-    private let figureTexture: SKTexture = SKTexture(imageNamed: "Water_Grid_Center")
-    
     private var leftTileMap: SKTileMapNode!
     private var rightTileMap: SKTileMapNode!
     
@@ -21,28 +19,26 @@ class TetraminoScene: SKScene {
     override func didMove(to view: SKView) {
         self.setupTileMaps()
         
-        figure = SKSpriteNode(texture: figureTexture)
-        figure.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        figure.scale(to: CGSize(width: 128 * self.leftTileMap.xScale, height: 128 * self.leftTileMap.yScale))
-        figure.position = CGPoint(x: self.leftTileMap.position.x - 128 * figure.xScale, y: self.leftTileMap.position.y)
+        let figureSize = SKSpriteNode.baseFigureSize
+        
+        figure = SKSpriteNode.figureOFill()
+        
+        figure.scale(to: CGSize(width: figure.size.width * self.leftTileMap.xScale, height: figure.size.height * self.leftTileMap.yScale))
+        figure.position = CGPoint(x: self.leftTileMap.position.x - figureSize.width / 2 * self.leftTileMap.xScale, y: self.leftTileMap.position.y - figureSize.height / 2 * self.leftTileMap.yScale)
         self.addChild(figure)
         
-        figure = SKSpriteNode(texture: figureTexture)
-        figure.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        figure.scale(to: CGSize(width: 128 * self.leftTileMap.xScale, height: 128 * self.leftTileMap.yScale))
-        figure.position = CGPoint(x: self.leftTileMap.position.x - 128 * figure.xScale, y: self.leftTileMap.position.y - 128 * figure.yScale)
+        figure = SKSpriteNode.figureJ()
+        figure.scale(to: CGSize(width: figure.size.width * self.leftTileMap.xScale, height: figure.size.height * self.leftTileMap.yScale))
+        figure.position = CGPoint(x: self.leftTileMap.position.x - figureSize.width * 3 / 2 * self.leftTileMap.xScale, y: self.leftTileMap.position.y + figureSize.height * self.leftTileMap.yScale)
+        figure.zRotation = CGFloat.pi
+        
         self.addChild(figure)
         
-        figure = SKSpriteNode(texture: figureTexture)
-        figure.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        figure.scale(to: CGSize(width: 128 * self.leftTileMap.xScale, height: 128 * self.leftTileMap.yScale))
-        figure.position = CGPoint(x: self.leftTileMap.position.x, y: self.leftTileMap.position.y - 128 * figure.yScale)
-        self.addChild(figure)
-
-        figure = SKSpriteNode(texture: figureTexture)
-        figure.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        figure.scale(to: CGSize(width: 128 * self.leftTileMap.xScale, height: 128 * self.leftTileMap.yScale))
-        figure.position = CGPoint(x: self.leftTileMap.position.x, y: self.leftTileMap.position.y)
+        figure = SKSpriteNode.figureS()
+        figure.scale(to: CGSize(width: figure.size.width * self.leftTileMap.yScale, height: figure.size.height * self.leftTileMap.xScale))
+        figure.position = CGPoint(x: self.leftTileMap.position.x + figureSize.width * 3 / 2 * self.leftTileMap.xScale, y: self.leftTileMap.position.y)
+        figure.zRotation = CGFloat.pi/2
+        
         self.addChild(figure)
     }
     
