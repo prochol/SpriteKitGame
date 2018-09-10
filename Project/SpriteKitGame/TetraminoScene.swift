@@ -22,7 +22,28 @@ class TetraminoScene: SKScene {
         self.setupTileMaps()
         
         figure = SKSpriteNode(texture: figureTexture)
+        figure.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        figure.scale(to: CGSize(width: 128 * self.leftTileMap.xScale, height: 128 * self.leftTileMap.yScale))
+        figure.position = CGPoint(x: self.leftTileMap.position.x - 128 * figure.xScale, y: self.leftTileMap.position.y)
+        self.addChild(figure)
         
+        figure = SKSpriteNode(texture: figureTexture)
+        figure.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        figure.scale(to: CGSize(width: 128 * self.leftTileMap.xScale, height: 128 * self.leftTileMap.yScale))
+        figure.position = CGPoint(x: self.leftTileMap.position.x - 128 * figure.xScale, y: self.leftTileMap.position.y - 128 * figure.yScale)
+        self.addChild(figure)
+        
+        figure = SKSpriteNode(texture: figureTexture)
+        figure.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        figure.scale(to: CGSize(width: 128 * self.leftTileMap.xScale, height: 128 * self.leftTileMap.yScale))
+        figure.position = CGPoint(x: self.leftTileMap.position.x, y: self.leftTileMap.position.y - 128 * figure.yScale)
+        self.addChild(figure)
+
+        figure = SKSpriteNode(texture: figureTexture)
+        figure.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        figure.scale(to: CGSize(width: 128 * self.leftTileMap.xScale, height: 128 * self.leftTileMap.yScale))
+        figure.position = CGPoint(x: self.leftTileMap.position.x, y: self.leftTileMap.position.y)
+        self.addChild(figure)
     }
     
     private func setupTileMaps() {
@@ -32,11 +53,9 @@ class TetraminoScene: SKScene {
     
     private func setupLeftTileMap() {
         self.leftTileMap = self.childNode(withName: "//Left Tile Map") as? SKTileMapNode
-        leftTileMap.color = NSColor.blue
     }
     
     private func setupRightTileMap() {
         self.rightTileMap = self.childNode(withName: "//Right Tile Map") as? SKTileMapNode
-        rightTileMap.color = NSColor.red
     }
 }

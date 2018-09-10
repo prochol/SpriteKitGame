@@ -23,6 +23,7 @@
 		CE5866751EEA8CF700A11B82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE5866731EEA8CF700A11B82 /* Main.storyboard */; };
 		CE5866811EEA8CF700A11B82 /* SpriteKitGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5866801EEA8CF700A11B82 /* SpriteKitGameTests.swift */; };
 		CE58668C1EEA8CF800A11B82 /* SpriteKitGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58668B1EEA8CF800A11B82 /* SpriteKitGameUITests.swift */; };
+		CEF1508421461B9C00A7319B /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1508321461B9C00A7319B /* Figure.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		CE5866871EEA8CF800A11B82 /* SpriteKitGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpriteKitGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE58668B1EEA8CF800A11B82 /* SpriteKitGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteKitGameUITests.swift; sourceTree = "<group>"; };
 		CE58668D1EEA8CF800A11B82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEF1508321461B9C00A7319B /* Figure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Figure.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,14 +127,13 @@
 		CE5866661EEA8CF600A11B82 /* SpriteKitGame */ = {
 			isa = PBXGroup;
 			children = (
-				CE4D24FE2142513700E78674 /* TetraminoScene.sks */,
+				CEF1508221461B6100A7319B /* Figures */,
+				CEF1508121461B3200A7319B /* Scene */,
 				CEAB89EB1EEF89A9008C8504 /* Resources */,
 				CE5866671EEA8CF700A11B82 /* AppDelegate.swift */,
-				CE5866691EEA8CF700A11B82 /* GameScene.sks */,
-				CE58666B1EEA8CF700A11B82 /* Actions.sks */,
+				CE58666F1EEA8CF700A11B82 /* ViewController.swift */,
 				CE58666D1EEA8CF700A11B82 /* GameScene.swift */,
 				CE4D2500214255B900E78674 /* TetraminoScene.swift */,
-				CE58666F1EEA8CF700A11B82 /* ViewController.swift */,
 				CE5866711EEA8CF700A11B82 /* Assets.xcassets */,
 				CE5866731EEA8CF700A11B82 /* Main.storyboard */,
 				CE5866761EEA8CF700A11B82 /* Info.plist */,
@@ -168,6 +169,24 @@
 				CE4D250321425E1600E78674 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		CEF1508121461B3200A7319B /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				CE4D24FE2142513700E78674 /* TetraminoScene.sks */,
+				CE5866691EEA8CF700A11B82 /* GameScene.sks */,
+				CE58666B1EEA8CF700A11B82 /* Actions.sks */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		CEF1508221461B6100A7319B /* Figures */ = {
+			isa = PBXGroup;
+			children = (
+				CEF1508321461B9C00A7319B /* Figure.swift */,
+			);
+			path = Figures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +330,7 @@
 				CE58666E1EEA8CF700A11B82 /* GameScene.swift in Sources */,
 				CE5866681EEA8CF700A11B82 /* AppDelegate.swift in Sources */,
 				36EBC76A515B4A60AEAEB129 /* SKTexture+actions.swift in Sources */,
+				CEF1508421461B9C00A7319B /* Figure.swift in Sources */,
 				36EBC9B14ABCCFBF6FDC05FF /* SKAction+personActions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
