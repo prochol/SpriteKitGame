@@ -14,7 +14,7 @@ class TetraminoScene: SKScene {
     private var leftTileMap: SKTileMapNode!
     private var rightTileMap: SKTileMapNode!
     
-    private var selectedFigure: SKSpriteNode!
+    private var selectedFigure: SKSpriteNode?
     
     private var mapScale: CGPoint!
     
@@ -74,21 +74,25 @@ class TetraminoScene: SKScene {
     private func touchDown(at point: CGPoint) {
         for figure in self.children {
             if figure is SKSpriteNode && figure.contains(point) {
-                self.selectedFigure = figure as! SKSpriteNode
+                self.selectedFigure = figure as? SKSpriteNode
             }
         }
         
-        self.selectedFigure.zPosition = 1
-        self.selectedFigure.scale(to: CGSize(width: self.selectedFigure.size.width * 1.25, height: self.selectedFigure.size.height * 1.25))
+        self.selectedFigure?.zPosition = 1
+        if let selectedSize = self.selectedFigure?.size {
+            self.selectedFigure?.scale(to: CGSize(width: selectedSize.width * 1.25, height: selectedSize.height * 1.25))
+        }
     }
     
     private func touchMoved(to point: CGPoint) {
-        self.selectedFigure.position = point
+        self.selectedFigure?.position = point
     }
     
     private func touchUp(at point: CGPoint) {
-        self.selectedFigure.scale(to: CGSize(width: self.selectedFigure.size.width * 0.8, height: self.selectedFigure.size.height * 0.8))
-        self.selectedFigure.zPosition = 0
+        if let selectedSize = self.selectedFigure?.size {
+            self.selectedFigure?.scale(to: CGSize(width: selectedSize.width * 0.8, height: selectedSize.height * 0.8))
+        }
+        self.selectedFigure?.zPosition = 0
         
         self.selectedFigure = nil
     }
