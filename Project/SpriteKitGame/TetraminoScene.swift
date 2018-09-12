@@ -14,33 +14,49 @@ class TetraminoScene: SKScene {
     private var leftTileMap: SKTileMapNode!
     private var rightTileMap: SKTileMapNode!
     
-    private var figure: SKSpriteNode!
+    private var selectedFigure: SKSpriteNode!
+    
+    private var mapScale: CGPoint!
     
     override func didMove(to view: SKView) {
         self.setupTileMaps()
+        self.mapScale = CGPoint.init(x: self.leftTileMap.xScale, y: self.leftTileMap.yScale)
+        let figureSize = SKSpriteNode.kBaseFigureSize
         
-        let figureSize = SKSpriteNode.baseFigureSize
+        var figure = SKSpriteNode.figureOFill()
         
-        figure = SKSpriteNode.figureOFill()
-        
-        figure.scale(to: CGSize(width: figure.size.width * self.leftTileMap.xScale, height: figure.size.height * self.leftTileMap.yScale))
+        figure.scale(to: CGSize(width: figure.size.width * mapScale.x, height: figure.size.height * mapScale.y))
         figure.position = CGPoint(x: self.leftTileMap.position.x - figureSize.width / 2 * self.leftTileMap.xScale, y: self.leftTileMap.position.y - figureSize.height / 2 * self.leftTileMap.yScale)
         self.addChild(figure)
         
         figure = SKSpriteNode.figureJ()
-        figure.scale(to: CGSize(width: figure.size.width * self.leftTileMap.xScale, height: figure.size.height * self.leftTileMap.yScale))
+        figure.scale(to: CGSize(width: figure.size.width *  mapScale.x, height: figure.size.height * mapScale.y))
         figure.position = CGPoint(x: self.leftTileMap.position.x - figureSize.width * 3 / 2 * self.leftTileMap.xScale, y: self.leftTileMap.position.y + figureSize.height * self.leftTileMap.yScale)
         figure.zRotation = CGFloat.pi
         
         self.addChild(figure)
         
         figure = SKSpriteNode.figureS()
-        figure.scale(to: CGSize(width: figure.size.width * self.leftTileMap.yScale, height: figure.size.height * self.leftTileMap.xScale))
+        figure.scale(to: CGSize(width: figure.size.width * mapScale.y, height: figure.size.height *  mapScale.x))
         figure.position = CGPoint(x: self.leftTileMap.position.x + figureSize.width * 3 / 2 * self.leftTileMap.xScale, y: self.leftTileMap.position.y)
         figure.zRotation = CGFloat.pi/2
         
         self.addChild(figure)
     }
+    
+    override func mouseDown(with event: NSEvent) {
+         self.touchDown(at: event.location(in: self))
+    }
+    
+    override func mouseDragged(with event: NSEvent) {
+        self.touchMoved(to: event.location(in: self))
+    }
+    
+    override func mouseUp(with event: NSEvent) {
+        self.touchUp(at: event.location(in: self))
+    }
+    
+    // MARK: - private functions
     
     private func setupTileMaps() {
         self.setupLeftTileMap()
@@ -53,5 +69,27 @@ class TetraminoScene: SKScene {
     
     private func setupRightTileMap() {
         self.rightTileMap = self.childNode(withName: "//Right Tile Map") as? SKTileMapNode
+    }
+    
+    private func touchDown(at point: CGPoint) {
+        for figure in self.children {
+            if figure is SKSpriteNode && figure.contains(point) {
+                self.selectedFigure = figure as! SKSpriteNode
+            }
+        }
+        
+        self.selectedFigure.zPosition = 1
+        self.selectedFigure.scale(to: CGSize(width: self.selectedFigure.size.width * 1.25, height: self.selectedFigure.size.height * 1.25))
+    }
+    
+    private func touchMoved(to point: CGPoint) {
+        self.selectedFigure.position = point
+    }
+    
+    private func touchUp(at point: CGPoint) {
+        self.selectedFigure.scale(to: CGSize(width: self.selectedFigure.size.width * 0.8, height: self.selectedFigure.size.height * 0.8))
+        self.selectedFigure.zPosition = 0
+        
+        self.selectedFigure = nil
     }
 }
