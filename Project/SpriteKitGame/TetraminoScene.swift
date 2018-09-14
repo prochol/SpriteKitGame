@@ -82,7 +82,10 @@ class TetraminoScene: SKScene {
             selectedFigure.zPosition = 1
             
             let selectedSize = selectedFigure.size
-            selectedFigure.scale(to: CGSize(width: selectedSize.width * 1.25, height: selectedSize.height * 1.25))
+            selectedFigure.run(SKAction.scale(by: 1.2, duration: 0.07)) {
+                selectedFigure.run(SKAction.scale(by: 1.125/1.2, duration: 0.1))
+//                selectedFigure.scale(to: CGSize(width: selectedSize.width * 1.125, height: selectedSize.height * 1.125))
+            }
         }
     }
     
@@ -93,7 +96,7 @@ class TetraminoScene: SKScene {
     private func touchUp(at point: CGPoint) {
         if let selectedFigure = self.selectedFigure {
             let selectedSize = selectedFigure.size
-            selectedFigure.scale(to: CGSize(width: selectedSize.width * 0.8, height: selectedSize.height * 0.8))
+            selectedFigure.scale(to: CGSize(width: selectedSize.width * 8/9, height: selectedSize.height * 8/9))
             
             selectedFigure.zPosition = 0
             
