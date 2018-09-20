@@ -122,7 +122,9 @@ class TetraminoScene: SKScene {
                         magnitPoint = CGPoint.init(x: centerPoint.x + FigureNode.kBaseFigureSize.width / 2, y: centerPoint.y)
                     }
                 }
-                
+            }
+            
+            for i in 0 ..< self.rightTileMap.numberOfRows {
                 for j in 0 ..< self.rightTileMap.numberOfColumns {
                     let centerPoint = self.rightTileMap.centerOfTile(atColumn: i, row: j)
                     let xDist = (centerPoint.x - selectedFigurePositionRight.x + FigureNode.kBaseFigureSize.width / 2)
